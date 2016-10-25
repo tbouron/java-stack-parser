@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --mode=build",
     "dev": "webpack --progress --colors --watch --mode=dev",
-    "test": "mocha --compilers js:babel-core/register --colors -w ./src/*.spec.js",
+    "test": "mocha --compilers js:babel-core/register --colors src/*.spec.js",
     "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- --compilers js:babel-core/register --colors --reporter dot src/*.spec.js"
   },
   "repository": {
