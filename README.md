@@ -3,6 +3,11 @@ Parse Java stack traces and transform them into comprehensive JS objects
 
 You can checkout [this working demo](http://codepen.io/tbouron/pen/wzOkwr/) to see how it looks like.
 
+| Branch | Build | Test coverage |
+| --- | --- | --- |
+| `master` | [![Travis](https://img.shields.io/travis/tbouron/java-stack-parser/master.svg)](https://travis-ci.org/tbouron/java-stack-parser/branches) | [![Codacy](https://img.shields.io/codacy/coverage/ec26bba6230f483e958972fb376f075e/master.svg)](https://www.codacy.com/app/tbouron/java-stack-parser/files?bid=3852863) |
+| `develop` | [![Travis](https://img.shields.io/travis/tbouron/java-stack-parser/develop.svg)](https://travis-ci.org/tbouron/java-stack-parser/branches) | [![Codacy](https://img.shields.io/codacy/coverage/ec26bba6230f483e958972fb376f075e/develop.svg)](https://www.codacy.com/app/tbouron/java-stack-parser/files?bid=3852862) |
+
 ## Install
 
 You can install this package either with `npm`, `yarn` or `bower`.
