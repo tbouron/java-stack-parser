@@ -4,8 +4,7 @@
   "description": "Parse Java stack traces and transform them into comprehensive JS objects",
   "main": "lib/java-stack-parser.js",
   "scripts": {
-    "build": "webpack --mode=build",
-    "dev": "webpack --progress --colors --watch --mode=dev",
+    "build": "webpack --bail",
     "test": "mocha --compilers js:babel-core/register --colors src/*.spec.js",
     "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- --compilers js:babel-core/register --colors --reporter dot src/*.spec.js"
   },
@@ -37,7 +36,6 @@
     "eslint-loader": "^1.6.0",
     "istanbul": "^1.0.0-alpha.2",
     "mocha": "^3.1.2",
-    "webpack": "^1.13.2",
-    "yargs": "^6.3.0"
+    "webpack": "^1.13.2"
   }
 }

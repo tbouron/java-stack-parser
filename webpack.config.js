@@ -1,38 +1,38 @@
+var env = process.env.NODE_ENV || 'development';
+var path = require('path');
+var pkg = require('./package.json');
 var webpack = require('webpack');
 var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
-var path = require('path');
-var env = require('yargs').argv.mode;
-var pkg = require('./package.json');
 
-var plugins = [], outputFile;
-
-if (env === 'build') {
-    plugins.push(new UglifyJsPlugin({ minimize: true }));
-    outputFile = pkg.name + '.min.js';
-} else {
-    outputFile = pkg.name + '.js';
-}
+var banner = [
+    pkg.name + ' by ' + pkg.author,
+    pkg.homepage,
+    'Version: ' + pkg.version + ' - ' +  new Date().getTime(),
+    'License: ' + pkg.license
+].join('\n');
 
 var config = {
     entry: __dirname + '/src/index.js',
     devtool: 'source-map',
     output: {
         path: __dirname + '/lib',
-        filename: outputFile,
+        filename: pkg.name + (env === 'production' ? '.min' : '') + '.js',
         library: pkg.name,
         libraryTarget: 'umd',
         umdNamedDefine: true
     },
     module: {
+        preLoaders: [
+            {
+                test: /\.js$/,
+                loader: 'eslint',
+                exclude: /node_modules/
+            }
+        ],
         loaders: [
             {
                 test: /\.js$/,
                 loader: 'babel',
-                exclude: /node_modules/
-            },
-            {
-                test: /\.js$/,
-                loader: "eslint-loader",
                 exclude: /node_modules/
             }
         ]
@@ -41,7 +41,23 @@ var config = {
         root: path.resolve('./src'),
         extensions: ['', '.js']
     },
-    plugins: plugins
+    plugins: [
+        new webpack.BannerPlugin(banner)
+    ]
 };
+
+if (env === 'production') {
+    config.plugins.push(new UglifyJsPlugin({
+        mangle: true,
+        compress: {
+            drop_console: true,
+            drop_debugger: true,
+            warnings: false
+        }
+    }));
+    outputFile = pkg.name + '.min.js';
+} else {
+    config.watch = true;
+}
 
 module.exports = config;
