@@ -1,6 +1,8 @@
 # java-stack-parser
 Parse Java stack traces and transform them into comprehensive JS objects
 
+You can checkout [this working demo](http://codepen.io/tbouron/pen/wzOkwr/) to see how it looks like.
+
 ## Install
 
 You can install this package either with `npm`, `yarn` or `bower`.
@@ -43,7 +45,7 @@ The library defines 3 objects:
 
 ### `Stack` Object
 
-This object is used to parse and transform a string representing a Java stack trace. Here is an example of how to use it. Alternatively, you can check out [the working demo](http://codepen.io/tbouron/pen/wzOkwr/):
+This object is used to parse and transform a string representing a Java stack trace. Here is an example of how to use it:
 ```js
 import {Stack} from 'java-stack-parser';
 
@@ -91,7 +93,7 @@ You can run tests and check the coverage with the following 2 commands:
 ```sh
 # Run tests
 ~$ npm test
-# Check covergae
+# Check coverage
 ~$ npm run coverage
 ```
 
