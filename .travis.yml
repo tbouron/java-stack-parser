@@ -4,5 +4,6 @@ node_js:
   - "5"
   - "4"
 after_script:
-- npm run coverage
-- cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage
+  - npm run coverage
+  - cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage
+  - bash <(curl -s https://codecov.io/bash)
